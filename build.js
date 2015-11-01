@@ -276,9 +276,9 @@ var PicturesMainContainer = React.createClass({
     var cathegories = this.state.picturesStore && this.state.picturesStore.cathegories || {};
     return React.createElement(
       'div',
-      { className: 'row' },
-      React.createElement(PictureRefreshControl, { className: 'columns small-12 small-centered', cathegories: cathegories, onToggleCathegory: this.toggleCathegory, onRefresh: this.refreshPictures }),
-      React.createElement(PicturesGallery, { className: 'columns small-12 small-centered', page: page, pages: pages, pictures: pictures })
+      null,
+      React.createElement(PictureRefreshControl, { cathegories: cathegories, onToggleCathegory: this.toggleCathegory, onRefresh: this.refreshPictures }),
+      React.createElement(PicturesGallery, { page: page, pages: pages, pictures: pictures })
     );
   }
 });

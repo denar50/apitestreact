@@ -8,7 +8,7 @@ var Reflux = require('reflux');
 
 var PicturesMainContainer = React.createClass({
   mixins: [Reflux.connect(PicturesStore, 'picturesStore')],
-  
+
   refreshPictures: function()
   {
     RefreshAction.triggerRefresh();
@@ -22,11 +22,11 @@ var PicturesMainContainer = React.createClass({
     var pages = this.state.picturesStore && this.state.picturesStore.pages;
     var pictures = this.state.picturesStore && this.state.picturesStore.pictures;
     var cathegories = this.state.picturesStore && this.state.picturesStore.cathegories || {};
-    return <div className="row">
-        <PictureRefreshControl className="columns small-12 small-centered" cathegories={cathegories} onToggleCathegory={this.toggleCathegory} onRefresh={this.refreshPictures}/>
-        <PicturesGallery className="columns small-12 small-centered" page={page} pages={pages} pictures ={pictures} />
+    return <div>
+        <PictureRefreshControl cathegories={cathegories} onToggleCathegory={this.toggleCathegory} onRefresh={this.refreshPictures}/>
+        <PicturesGallery page={page} pages={pages} pictures ={pictures} />
       </div>
   }
 });
 
-module.exports = PicturesMainContainer; 
+module.exports = PicturesMainContainer;

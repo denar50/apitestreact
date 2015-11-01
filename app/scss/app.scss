@@ -1,5 +1,3 @@
-@import '../../node_modules/foundation-sites/scss/normalize';
-@import '../../node_modules/foundation-sites/scss/foundation';
 body
 {
   background-color: black;
@@ -18,7 +16,7 @@ body
     }
     display: inline-block;
   }
-  
+
   .btn.refresh
   {
     position: absolute;
@@ -30,7 +28,7 @@ body
 {
   .page
   {
-    
+
   }
 }
 
