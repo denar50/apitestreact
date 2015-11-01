@@ -13,7 +13,7 @@ var PicturesGallery = React.createClass({
     {
       for(var i = 0; i < sourcePictures.length; i++)
       {
-        pictures.push(<div key={i + sourcePictures[i].author_id}><img src={sourcePictures[i].media.m}/></div>);
+        pictures.push(<div className="image-result" key={i + sourcePictures[i].author_id}><img src={sourcePictures[i].media.m}/></div>);
       }
     }
     return <div>
@@ -24,5 +24,3 @@ var PicturesGallery = React.createClass({
 });
 
 module.exports = PicturesGallery;
-
-
