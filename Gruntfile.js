@@ -10,14 +10,14 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'assets/css/app.css': 'scss/app.scss'
+          'assets/css/app.css': 'app/scss/app.scss'
         }
       }
     },
     watch :
     {
       scripts: {
-        files: ['app/**/*.js', 'app/components/*.js', 'app/actions/*.js', 'app/stores/*.js', 'scss/*.scss'],
+        files: ['app/**/*.js', 'app/components/*.js', 'app/actions/*.js', 'app/stores/*.js', 'app/scss/*.scss', 'app/**/*.jsx'],
         tasks: ['build']
       },
     },
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       {
         files:
         {
-          'build.js' : ['app/app.js']
+          'build.js' : ['app/app.jsx']
         }
       },
       options:
