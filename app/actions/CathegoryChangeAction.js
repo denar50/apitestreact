@@ -1,8 +1,7 @@
 var Reflux = require('reflux');
-var RefreshAction = require('./RefreshAction');
 
 var CathegoryChangeAction = Reflux.createActions([
-  'changePage'
+  'toggleCathegory'
 ]);
 
 module.exports = CathegoryChangeAction;

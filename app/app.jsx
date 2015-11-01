@@ -8,4 +8,4 @@ var mainConatiner = $('#main-container')[0];
 
 reactDOM.render(<PicturesMainContainer />, mainConatiner);
 
-RefreshAction.refreshPictures();
+RefreshAction.triggerRefresh();

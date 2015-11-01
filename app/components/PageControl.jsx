@@ -4,6 +4,7 @@ var Utils = require('../utils/Utils');
 var PageControl = React.createClass({
   onPageChange: function(page)
   {
+    debugger;
     var page = page;
     if(page === "<")
     {
