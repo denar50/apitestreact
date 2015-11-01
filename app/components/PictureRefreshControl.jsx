@@ -15,17 +15,23 @@ var PictureRefreshControl = React.createClass({
   },
   render: function()
   {
-    return <div>
-      <label htmlFor="dogs">Dogs</label>
-      <input name="dogs" type="checkbox" checked={this.props.cathegories.dogs} onClick={this.toggleCathegory.bind(this, 'dogs')} />
-      
-      <label htmlFor="cats">Cats</label>
-      <input name="cats" type="checkbox" checked={this.props.cathegories.cats} onClick={this.toggleCathegory.bind(this, 'cats')} />
-      
-      <label htmlFor="sports">Sports</label>
-      <input name="sports" type="checkbox" checked={this.props.cathegories.sports} onClick={this.toggleCathegory.bind(this, 'sports')} />
-      <button onClick={this.refresh}>Refresh</button>
-      </div>;
+    return <div className="filters-container row">
+      <div className="filter columns small-3">
+        <label htmlFor="dogs">Dogs</label>
+        <input name="dogs" type="checkbox" checked={this.props.cathegories.dogs} onClick={this.toggleCathegory.bind(this, 'dogs')} />
+      </div>
+      <div className="filter columns small-3">
+        <label htmlFor="cats">Cats</label>
+        <input name="cats" type="checkbox" checked={this.props.cathegories.cats} onClick={this.toggleCathegory.bind(this, 'cats')} />
+      </div>
+      <div className="filter columns small-3">
+        <label htmlFor="sports">Sports</label>
+        <input name="sports" type="checkbox" checked={this.props.cathegories.sports} onClick={this.toggleCathegory.bind(this, 'sports')} />
+      </div>
+      <div className="columns small-3">
+        <button className="btn refresh" onClick={this.refresh}>Refresh</button>
+      </div>
+    </div>;
   }
 
 });

@@ -1,4 +1,53 @@
-.image-result
+@import '../../node_modules/foundation-sites/scss/normalize';
+@import '../../node_modules/foundation-sites/scss/foundation';
+body
 {
-  display: inline-block;
+  background-color: black;
+  color: white;
+}
+
+.filters-container
+{
+  position: relative;
+  color: white;
+  .filter
+  {
+    label, input
+    {
+      display: inline-block;
+    }
+    display: inline-block;
+  }
+  
+  .btn.refresh
+  {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.paginator
+{
+  .page
+  {
+    
+  }
+}
+
+
+
+.pictures-container
+{
+  text-align: center;
+  max-height: 800px;
+  overflow-y: scroll;
+  .image-result
+  {
+    display: inline-block;
+    background-color: black;
+    background-position: 50% 50%;
+    width: 300px;
+    height: 300px;
+    margin-left: 4px;
+  }
 }

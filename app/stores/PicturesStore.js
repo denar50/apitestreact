@@ -3,12 +3,13 @@ var RefreshAction = require('../actions/RefreshAction');
 var ShowItemAction = require('../actions/ShowItemAction');
 var CathegoryChangeAction = require('../actions/CathegoryChangeAction');
 var FlickerResource = require('../resources/FlickerResource');
+var PageChangeAction = require('../actions/PageChangeAction');
 /**
 * This store subscribes to the PetActions and implement the actions that PetActions espeficy.
 *
 */
 var PicturesStore = Reflux.createStore({
-  listenables: [RefreshAction, ShowItemAction, CathegoryChangeAction],
+  listenables: [RefreshAction, ShowItemAction, CathegoryChangeAction, PageChangeAction],
   currentPicture: null,
   init: function()
   {
@@ -32,7 +33,7 @@ var PicturesStore = Reflux.createStore({
   {
     var params = {};
     params.page = this.newPage;
-    params.tags = this.getTagsArray;
+    params.tags = this.getTagsArray();
     RefreshAction.refreshPictures(params);
   },
   getTagsArray: function()

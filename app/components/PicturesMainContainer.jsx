@@ -1,5 +1,4 @@
 var React = require('react');
-var PictureViewer = require('./PictureViewer.jsx');
 var PicturesGallery = require('./PicturesGallery.jsx');
 var PictureRefreshControl = require('./PictureRefreshControl.jsx');
 var RefreshAction = require('../actions/RefreshAction');
@@ -19,15 +18,13 @@ var PicturesMainContainer = React.createClass({
     CathegoryChangeAction.toggleCathegory(cathegory);
   },
   render: function(){
-    debugger;
     var page = this.state.picturesStore && this.state.picturesStore.page;
     var pages = this.state.picturesStore && this.state.picturesStore.pages;
     var pictures = this.state.picturesStore && this.state.picturesStore.pictures;
     var cathegories = this.state.picturesStore && this.state.picturesStore.cathegories || {};
-    return <div>
-        <PictureViewer />
-        <PictureRefreshControl cathegories={cathegories} onToggleCathegory={this.toggleCathegory} onRefresh={this.refreshPictures}/>
-        <PicturesGallery page={page} pages={pages} pictures ={pictures} />
+    return <div className="row">
+        <PictureRefreshControl className="columns small-12 small-centered" cathegories={cathegories} onToggleCathegory={this.toggleCathegory} onRefresh={this.refreshPictures}/>
+        <PicturesGallery className="columns small-12 small-centered" page={page} pages={pages} pictures ={pictures} />
       </div>
   }
 });
