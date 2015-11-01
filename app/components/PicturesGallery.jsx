@@ -1,24 +1,36 @@
 var React = require('react');
 var PicturesStore = require('../stores/PicturesStore');
 var Reflux = require('reflux');
+var PageControl = require('./PageControl.jsx');
 
 var PicturesGallery = React.createClass({
   mixins: [Reflux.connect(PicturesStore, 'picturesStore')],
+  onPageChange: function(page)
+  {
+    
+  },
   render: function()
   {
-    debugger;
     var pictures = [];
-    var sourcePictures = this.state.picturesStore && this.state.picturesStore.pictures;
+    var picturesStore = this.state.picturesStore;
+    var sourcePictures = picturesStore && picturesStore.pictures;
     if(sourcePictures)
     {
       for(var i = 0; i < sourcePictures.length; i++)
       {
-        pictures.push(<div className="image-result" key={i + sourcePictures[i].author_id}><img src={sourcePictures[i].media.m}/></div>);
+        pictures.push(<div className="image-result" key={i}><img src={sourcePictures[i].url_m}/></div>);
       }
     }
+    var page = picturesStore && picturesStore.page;
+    var pages = picturesStore && picturesStore.pages;
     return <div>
-      {pictures}
-      </div>;
+      <div>
+        <PageControl page={page} pages={pages}/>
+      </div>
+      <div>
+        {pictures}
+      </div>
+    </div>;
   }
 
 });

@@ -4,48 +4,26 @@ var RefreshAction = require('../actions/RefreshAction');
 var $ = require('jquery');
 
 var PictureRefreshControl = React.createClass({
-  getInitialState: function()
-  {
-    return {
-      cathegories: {
-        cats: false,
-        dogs: false,
-        sports: false
-      }
-    };
-  },
+  
   refresh: function()
   {
-    var cathegories = this.state.cathegories;
-    var tags = [];
-    for(var cathegory in cathegories)
-    {
-      if(cathegories.hasOwnProperty(cathegory) && cathegories[cathegory] === true)
-      {
-        tags.push(cathegory);
-      }
-    }    
-    RefreshAction.refreshPictures(tags);
+    this.props.onRefresh();
   },
-  toggleCathegory: function(event)
+  toggleCathegory: function(cathegory)
   {
-    debugger;
-    var cathegory = $(event.target).attr('name');
-    var cathegories = this.state.cathegories;
-    cathegories[cathegory] = !cathegories[cathegory];
-    this.setState({cathegories: cathegories});
+    this.props.onToggleCathegory(cathegory);
   },
   render: function()
   {
     return <div>
       <label htmlFor="dogs">Dogs</label>
-      <input name="dogs" type="checkbox" checked={this.state.cathegories.dogs} onClick={this.toggleCathegory} />
+      <input name="dogs" type="checkbox" checked={this.props.cathegories.dogs} onClick={this.toggleCathegory.bind(this, 'dogs')} />
       
       <label htmlFor="cats">Cats</label>
-      <input name="cats" type="checkbox" checked={this.state.cathegories.cats} onClick={this.toggleCathegory} />
+      <input name="cats" type="checkbox" checked={this.props.cathegories.cats} onClick={this.toggleCathegory.bind(this, 'cats')} />
       
       <label htmlFor="sports">Sports</label>
-      <input name="sports" type="checkbox" checked={this.state.cathegories.sports} onClick={this.toggleCathegory} />
+      <input name="sports" type="checkbox" checked={this.props.cathegories.sports} onClick={this.toggleCathegory.bind(this, 'sports')} />
       <button onClick={this.refresh}>Refresh</button>
       </div>;
   }

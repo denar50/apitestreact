@@ -1,6 +1,7 @@
 var Reflux = require('reflux');
 var RefreshAction = require('../actions/RefreshAction');
 var ShowItemAction = require('../actions/ShowItemAction');
+var FlickerResource = require('../resources/FlickerResource');
 /**
 * This store subscribes to the PetActions and implement the actions that PetActions espeficy.
 *
@@ -10,18 +11,19 @@ var PicturesStore = Reflux.createStore({
   currentPicture: null,
   state: {
     currentPicture: null,
-    fetching: false
+    picturesPerPage: FlickerResource.picturesPerPage
   },
   
   refreshPictures: function()
   {
-    this.state.pictures = undefined;
     this.trigger(this.state);
   },
   
   refreshPicturesCompleted: function(data)
   {
-    this.state.pictures = data;
+    this.state.pictures = data.photo;
+    this.state.page = data.page;
+    this.state.pages = data.pages;
     this.trigger(this.state);
   },
   
