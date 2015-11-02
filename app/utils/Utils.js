@@ -4,21 +4,13 @@ var Utils = (function(){
     {
       return theFunction && {}.toString.call(theFunction) === '[object Function]';
     },
-    fileIsImage: function(theFile)
+    truncateText: function(text, maxCharCount)
     {
-      return (theFile.name || false) && theFile.name.match(/\.(jpg|jpeg|png|gif)$/);
-    },
-    isAnEmptyField: function(object, field)
-    {
-      return !object[field] || (object[field] + '').trim().length === '';
-    },
-    isUndefined: function(variable)
-    {
-      return typeof variable === 'undefined';
-    },
-    isDefined: function(variable)
-    {
-      return !this.isUndefined(variable);
+      if(text.length > maxCharCount)
+      {
+        text = text.substring(0, maxCharCount - 1) + '...';
+      }
+      return text;
     }
   };
 })();

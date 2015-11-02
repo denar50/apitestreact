@@ -39,7 +39,6 @@ FlickerResource.prototype.fetchAll = function(params)
       cache: false,
       context: this,
       success: function(data){
-        debugger;
         defer.resolve(data.photos);
       },
       fail: function(add)

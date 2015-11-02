@@ -4,7 +4,6 @@ var Utils = require('../utils/Utils');
 var PageControl = React.createClass({
   onPageChange: function(page)
   {
-    debugger;
     var page = page;
     if(page === "<")
     {
@@ -26,7 +25,6 @@ var PageControl = React.createClass({
       var offset = this.props.offSet || 4;
       var links = [];
       var currentPage = this.props.page;
-      debugger;
       var linksCount = 0;
       while(currentPage >= 1 && linksCount <= offset)
       {
@@ -35,7 +33,6 @@ var PageControl = React.createClass({
         linksCount++;
       }
       currentPage = this.props.page + 1;
-      debugger;
       offset = offset + (offset - linksCount); //add the remaning links that were not created
       linksCount = 0;
       while(currentPage <= this.props.pages && linksCount <= offset)

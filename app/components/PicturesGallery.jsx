@@ -5,7 +5,7 @@ var PageControl = require('./PageControl.jsx');
 var CathegoryChangeAction = require('../actions/CathegoryChangeAction');
 var PageChangeAction = require('../actions/PageChangeAction');
 var Constants = require('../utils/Constants');
-var drawPicturesGallery = require('../drawPicturesGallery');
+var drawPicturesGallery = require('../d3/drawPicturesGallery');
 
 var PicturesGallery = React.createClass({
   imagesIds: '',
@@ -15,7 +15,6 @@ var PicturesGallery = React.createClass({
   },
   shouldComponentUpdate: function(nextProps)
   {
-    debugger;
     var newImagesIds = '';
     var shouldUpdate = true;
     if(nextProps.pictures)
