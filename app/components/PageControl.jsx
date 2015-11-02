@@ -2,6 +2,12 @@ var React = require('react');
 var Utils = require('../utils/Utils');
 
 var PageControl = React.createClass({
+  /**
+  * Event handler for when the user requests a new page. 
+  * It calculates (if needed) the requested page and passes it to the hanlder defined in the props.
+  *
+  * @param {string} page the requested page
+  */
   onPageChange: function(page)
   {
     var page = page;
@@ -18,29 +24,42 @@ var PageControl = React.createClass({
       this.props.onPageChange(page);
     }
   },
+  
+  /**
+  * Given the current page this will render the pagination links and will try to put the current page in the middle of them. The props.offset
+  * is optional and it represents the amount of links that will be displaed on each side of the current page. E.g: If the offset is 3, props.page is 5 and props.pages is 10 then
+  * it will output the following links: < 2 3 4 5 6 7 8 >. Notice the arrows, they will only be displayed when there are pages beyond the limits.
+  */
   render: function()
   {
+    var links = [];
     if(this.props.page && this.props.pages)
-    {
-      var offset = this.props.offSet || 4;
-      var links = [];
+    {  
       var currentPage = this.props.page;
-      var linksCount = 0;
-      while(currentPage >= 1 && linksCount <= offset)
-      {
-        links.unshift(<a href="#" key={currentPage} onClick={this.onPageChange.bind(this, currentPage)} className={currentPage === this.props.page ? 'selected' : ''}>{currentPage}</a>);
-        currentPage--;
-        linksCount++;
+      var right = currentPage;
+      var left = currentPage;
+      var rightLimit = this.props.pages;
+      var leftLimit = 1;
+      var offset = this.props.offset || 4;
+      var numberOfLinksToShow = offset * 2;
+      var pages = [];
+      pages.push(currentPage);
+      while((left >= leftLimit || right <= rightLimit) && numberOfLinksToShow > 0)
+      { 
+        if(--left >= leftLimit)
+        {
+          pages.unshift(left);
+          numberOfLinksToShow--;
+        }
+        if(++right <= rightLimit)
+        {
+          pages.push(right);
+          numberOfLinksToShow--;
+        }
       }
-      currentPage = this.props.page + 1;
-      offset = offset + (offset - linksCount); //add the remaning links that were not created
-      linksCount = 0;
-      while(currentPage <= this.props.pages && linksCount <= offset)
-      {
-        links.push(<a href="#" className={currentPage === this.props.page ? 'selected' : ''} onClick={this.onPageChange.bind(this, currentPage)} key={currentPage}>{currentPage}</a>);
-        currentPage++;
-        linksCount++;
-      }
+      var links = pages.map(function(currentPage){
+        return <a href="#" className={currentPage === this.props.page ? 'selected' : ''} onClick={this.onPageChange.bind(this, currentPage)} key={currentPage}>{currentPage}</a>
+      }.bind(this));
       if(this.props.page - 4 > 1)
       {
         links.unshift(<a href="#" onClick={this.onPageChange.bind(this, "<")} key="<">&lt;</a>);

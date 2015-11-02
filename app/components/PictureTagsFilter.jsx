@@ -30,7 +30,7 @@ var PictureTagsFilter = React.createClass({
       if(cathegoriesObject.hasOwnProperty(key))
       {
         cathegoryElements.push(
-          <div className="filter">
+          <div key={key} className="filter">
             <label htmlFor={key}>{key}</label>
             <input name={key} type="checkbox" checked={this.props.cathegories[key]} onChange={this.toggleCathegory.bind(this, key)} />
           </div>
