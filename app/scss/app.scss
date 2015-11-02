@@ -1,5 +1,7 @@
 @import 'mixins';
-
+/**
+* General styles
+*/
 html
 {
   font-size: 16px;
@@ -22,6 +24,9 @@ p
   width: 100%;
 }
 
+/**
+* For the PicturePagsFilter comnponent
+*/
 .filters-container
 {
   position: relative;
@@ -52,6 +57,10 @@ p
     font-size: inherit;
   }
 }
+
+/**
+* for the PicturesGallery component. 
+*/
 
 .paginator
 {

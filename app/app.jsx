@@ -7,5 +7,3 @@ var RefreshAction = require('./actions/RefreshAction');
 var mainConatiner = $('#main-container')[0];
 
 reactDOM.render(<PicturesMainContainer />, mainConatiner);
-
-RefreshAction.triggerRefresh();
