@@ -20,5 +20,26 @@
     "jest-cli": "^0.4.19",
     "load-grunt-tasks": "^3.3.0",
     "react-addons-test-utils": "^0.14.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/reflux",
+      "<rootDir>/node_modules/jquery"
+    ],
+    "testFileExtensions": [
+      "jsx",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ]
   }
 }
