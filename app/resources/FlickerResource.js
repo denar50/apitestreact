@@ -26,7 +26,7 @@ FlickerResource.prototype.abortCurrentRequest = function()
 * @param {object} params contain the "tags" array and the "page" number. Both parameters are optional. The tag by default is "iceland"
 */
 FlickerResource.prototype.fetchAll = function(params)
-{
+{ 
   this.abortCurrentRequest();
   var tags = params && params.tags;
   var page = params && params.page;

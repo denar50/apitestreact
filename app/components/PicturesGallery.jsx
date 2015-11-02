@@ -4,7 +4,6 @@ var Reflux = require('reflux');
 var PageControl = require('./PageControl.jsx');
 var CathegoryChangeAction = require('../actions/CathegoryChangeAction');
 var PageChangeAction = require('../actions/PageChangeAction');
-var Constants = require('../utils/Constants');
 var drawPicturesGallery = require('../d3/drawPicturesGallery');
 
 /**

@@ -1,3 +1,6 @@
+/**
+* Just a helper object that will hold generic logic that is not part of the business logic
+*/
 var Utils = (function(){
   return {
     isFunction: function(theFunction)
