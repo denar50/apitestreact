@@ -73,26 +73,41 @@ body
 .pictures-container
 {
   text-align: center;
+  font-size: 0;
   .image-result
   {
+    position: relative;
     display: inline-block;
-    background-color: black;
-    background-position: 50% 50%;
-    width: 300px;
-    height: 300px;
-    margin-left: 4px;
-  }
-  .hidden
-  {
-    opacity: 0;
-  }
-  img
-  {
     width: 200px;
     height: 200px;
-    margin: 4px;
-    border: 2px solid white;
-    -webkit-transition: opacity 500ms;
-    transition: opacity 500ms;
+
+    img
+    {
+      width: inherit;
+      height: inherit;
+      -webkit-transition: transform 500ms, opacity 500ms;
+      transition: transform 500ms, opacity 500ms;
+      opacity: 0.7;
+
+      &.hovered
+      {
+        transform: scale(1.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        opacity: 1;
+        -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+      }
+
+      &.hidden
+      {
+        opacity: 0;
+      }
+    }
   }
+
+
 }
