@@ -1,8 +1,17 @@
 var $ = require('jquery');
 
 var FlickerResource = function(){};
-FlickerResource.prototype.FAIL_MSG = 'There has been an error';
+
+FlickerResource.prototype.FAIL_MSG = 'There has been an error while retrieving the pictures from Flickr';
+
+/**
+* Number of pictures per page retrieved from Flickr
+*/
 FlickerResource.prototype.picturesPerPage = 50;
+
+/**
+* Aborts the current request to prevent the success method from executing twice
+*/
 FlickerResource.prototype.abortCurrentRequest = function()
 {
   if(this.xhr && this.xhr.abort)
@@ -10,23 +19,29 @@ FlickerResource.prototype.abortCurrentRequest = function()
     this.xhr.abort();
   }
 }
+
+/**
+* This method sends a GET request to Flickr's API. This request can be customized with the received params
+* 
+* @param {object} params contain the "tags" array and the "page" number. Both parameters are optional
+*/
 FlickerResource.prototype.fetchAll = function(params)
 {
+  debugger;
   this.abortCurrentRequest();
-  var tags = params.tags;
-  var page = params.page;
+  var tags = params && params.tags;
+  var page = params && params.page;
   var sourceUrl = 'https://api.flickr.com/services/rest/?api_key=37233d8652ecbbf97dab0ac1fc7754e3&extras=+url_m,path_alias&format=json' + '&per_page=' + this.picturesPerPage;
   var defer = $.Deferred();
   var tagsString = '';
-  var method = 'flickr.photos.getRecent'; //Default method when there is not a search criteria in the URL
+  var method = 'flickr.photos.search';
 
   if(tags && tags.length > 0)
   {
-    tagsString += '&tags=' + tags.join(',');
-    method = 'flickr.photos.search';
+    tagsString = tags.join(',');
   }
 
-  sourceUrl += tagsString + '&method=' + method;
+  sourceUrl += '&tags=' + (tagsString || 'iceland') + '&method=' + method;
   if(page)
   {
     sourceUrl += '&page='+page;
@@ -49,4 +64,4 @@ FlickerResource.prototype.fetchAll = function(params)
   return defer.promise();
 };
 
-module.exports = new FlickerResource();
+module.exports = new FlickerResource(); //Singleton

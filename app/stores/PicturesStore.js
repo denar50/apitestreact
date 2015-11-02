@@ -4,6 +4,8 @@ var ShowItemAction = require('../actions/ShowItemAction');
 var CathegoryChangeAction = require('../actions/CathegoryChangeAction');
 var FlickerResource = require('../resources/FlickerResource');
 var PageChangeAction = require('../actions/PageChangeAction');
+
+
 /**
 * This store subscribes to the PetActions and implement the actions that PetActions espeficy.
 *
@@ -32,6 +34,7 @@ var PicturesStore = Reflux.createStore({
   },
   triggerRefresh: function()
   {
+    debugger;
     var params = {};
     params.page = this.page;
     params.tags = this.getTagsArray();

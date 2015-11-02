@@ -43,9 +43,14 @@ var PicturesGallery = React.createClass({
   {
     if(this.props.pictures)
     {
-        drawPicturesGallery(this.props.pictures, '#pictures-container');
+        this.d3Clean = drawPicturesGallery(this.props.pictures, '#pictures-container');
     }
   },
+  componentWillUnmount: function()
+  {
+    debugger;
+    Utils.isFunction(this.d3Clean) && this.d3Clean();
+  },  
   render: function()
   {
     var page = this.props.page;
