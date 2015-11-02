@@ -15,7 +15,7 @@ var PicturesStore = Reflux.createStore({
   {
     this.currentPicture= null;
     this.picturesPerPage= FlickerResource.picturesPerPage;
-    this.cathegories= 
+    this.cathegories=
     {
       cats: false,
       dogs: false,
@@ -26,13 +26,13 @@ var PicturesStore = Reflux.createStore({
   },
   changePage: function(page)
   {
-    this.newPage = page;
+    this.page = page;
     this.triggerRefresh();
   },
   triggerRefresh: function()
   {
     var params = {};
-    params.page = this.newPage;
+    params.page = this.page;
     params.tags = this.getTagsArray();
     RefreshAction.refreshPictures(params);
   },
@@ -68,10 +68,9 @@ var PicturesStore = Reflux.createStore({
     this.pages = data.pages;
     this.trigger(this);
   },
-  
+
   refreshPicturesFailed: function()
   {
-    debugger;
   }
 
 });

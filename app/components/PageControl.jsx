@@ -40,7 +40,7 @@ var PageControl = React.createClass({
       linksCount = 0;
       while(currentPage <= this.props.pages && linksCount <= offset)
       {
-        links.push(<a href="#" onClick={this.onPageChange.bind(this, currentPage)} key={currentPage}>{currentPage}</a>);
+        links.push(<a href="#" className={currentPage === this.props.page ? 'selected' : ''} onClick={this.onPageChange.bind(this, currentPage)} key={currentPage}>{currentPage}</a>);
         currentPage++;
         linksCount++;
       }
@@ -53,7 +53,7 @@ var PageControl = React.createClass({
         links.push(<a onClick={this.onPageChange.bind(this, ">")} href="#" key=">">&gt;</a>);
       }
     }
-    return <div>{links}</div>
+    return <div className="paginator">{links}</div>
   }
 });
 

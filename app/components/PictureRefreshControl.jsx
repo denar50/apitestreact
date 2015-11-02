@@ -28,7 +28,7 @@ var PictureRefreshControl = React.createClass({
         <label htmlFor="sports">Sports</label>
         <input name="sports" type="checkbox" checked={this.props.cathegories.sports} onClick={this.toggleCathegory.bind(this, 'sports')} />
       </div>
-      <div className=">
+      <div className="filter">
         <button className="btn refresh" onClick={this.refresh}>Refresh</button>
       </div>
     </div>;
