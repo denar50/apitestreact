@@ -5,9 +5,10 @@ var PageControl = require('./PageControl.jsx');
 var CathegoryChangeAction = require('../actions/CathegoryChangeAction');
 var PageChangeAction = require('../actions/PageChangeAction');
 var Constants = require('../utils/Constants');
+var drawPicturesGallery = require('../drawPicturesGallery');
 
 var PicturesGallery = React.createClass({
-  
+
   onPageChange: function(page)
   {
     PageChangeAction.changePage(page);
@@ -27,6 +28,8 @@ var PicturesGallery = React.createClass({
         }
         pictureElements.push(<div className="image-result" key={i} style={{backgroundImage: 'url(' + pictureURL + ')'}}></div>);
       }
+      debugger;
+      drawPicturesGallery(pictures);
     }
     var page = this.props.page;
     var pages = this.props.pages;
@@ -34,8 +37,8 @@ var PicturesGallery = React.createClass({
       <div>
         <PageControl onPageChange={this.onPageChange} page={page} pages={pages}/>
       </div>
-      <div className="pictures-container">
-        {pictureElements}
+      <div id="pictures-container" className="pictures-container">
+
       </div>
     </div>;
   }

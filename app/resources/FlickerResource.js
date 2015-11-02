@@ -15,7 +15,7 @@ FlickerResource.prototype.fetchAll = function(params)
   this.abortCurrentRequest();
   var tags = params.tags;
   var page = params.page;
-  var sourceUrl = 'https://api.flickr.com/services/rest/?api_key=fd591c6ac50b4a1dd197f6058ed4c1ee&extras=+url_m&format=json' + '&per_page=' + this.picturesPerPage;
+  var sourceUrl = 'https://api.flickr.com/services/rest/?api_key=37233d8652ecbbf97dab0ac1fc7754e3&extras=+url_m&format=json' + '&per_page=' + this.picturesPerPage;
   var defer = $.Deferred();
   var tagsString = '';
   var method = 'flickr.photos.getRecent'; //Default method when there is not a search criteria in the URL

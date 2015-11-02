@@ -27,6 +27,7 @@ var PicturesStore = Reflux.createStore({
   changePage: function(page)
   {
     this.page = page;
+    this.pictures = undefined;
     this.triggerRefresh();
   },
   triggerRefresh: function()

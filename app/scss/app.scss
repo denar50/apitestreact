@@ -82,4 +82,17 @@ body
     height: 300px;
     margin-left: 4px;
   }
+  .hidden
+  {
+    opacity: 0;
+  }
+  img
+  {
+    width: 200px;
+    height: 200px;
+    margin: 4px;
+    border: 2px solid white;
+    -webkit-transition: opacity 500ms;
+    transition: opacity 500ms;
+  }
 }
