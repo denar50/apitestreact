@@ -43,7 +43,7 @@ var PicturesGallery = React.createClass({
   {
     if(this.props.pictures)
     {
-        drawPicturesGallery(this.props.pictures);
+        drawPicturesGallery(this.props.pictures, '#pictures-container');
     }
   },
   render: function()

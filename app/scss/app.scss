@@ -109,6 +109,7 @@ p
       img
       {
         @include static-square(200px);
+        @include transition(opacity 500ms);
         &.hidden
         {
           opacity: 0;
