@@ -21,7 +21,7 @@ var PicturesStore = Reflux.createStore({
     {
       cats: false,
       dogs: false,
-      sports: false
+      birds: false
     };
     this.page = 0;
     this.pages = 0;
