@@ -56,9 +56,11 @@ var drawPicturesGallery = (function(){
       })
       element.on('mouseover', function(){
         d3.select(this).classed("hovered", true);
+        picturesContainer.classed('hovering', true);
       })
       .on('mouseleave', function(){
         d3.select(this).classed("hovered", false);
+        picturesContainer.classed('hovering', false);
       });
     }
 

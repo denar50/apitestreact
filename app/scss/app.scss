@@ -1,3 +1,5 @@
+@import 'mixins';
+
 html
 {
   font-size: 16px;
@@ -76,23 +78,18 @@ p
   }
 }
 
-
-@mixin static-square($size)
-{
-  width: $size;
-  height: $size;
-}
-@mixin transition($transition)
-{
-    -moz-transition:    $transition;
-    -o-transition:      $transition;
-    -webkit-transition: $transition;
-    transition:         $transition;
-}
 .pictures-container
 {
   text-align: center;
   font-size: 0;
+  
+  &.hovering
+  {
+    .image-result .wrapper:not(.hovered)
+    {
+      opacity: 0.6;
+    }
+  }
   
   .image-result
   {
@@ -102,9 +99,8 @@ p
     
     .wrapper
     {
-      opacity: 0.7;
-      @include transition(opacity 500ms);
-      @include transition(transform 500ms);
+      
+      @include transition(opacity 500ms, transform 500ms);
       cursor: pointer;
       img
       {
@@ -156,3 +152,6 @@ p
 
 
 }
+
+
+
