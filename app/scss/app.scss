@@ -104,11 +104,11 @@ p
     {
       opacity: 0.7;
       @include transition(opacity 500ms);
+      @include transition(transform 500ms);
       cursor: pointer;
       img
       {
         @include static-square(200px);
-        @include transition(transform 500ms);
         &.hidden
         {
           opacity: 0;
