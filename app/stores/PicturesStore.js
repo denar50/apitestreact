@@ -56,7 +56,7 @@ var PicturesStore = Reflux.createStore({
   toggleCathegory: function(cathegory)
   {
     this.cathegories[cathegory] = !this.cathegories[cathegory];
-    this.trigger(this);
+    RefreshAction.triggerRefresh();
   },
   refreshPictures: function()
   {

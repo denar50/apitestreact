@@ -69,7 +69,11 @@ body
 }
 
 
-
+@mixin static-square($size)
+{
+  width: $size;
+  height: $size;
+}
 .pictures-container
 {
   text-align: center;
@@ -78,16 +82,15 @@ body
   {
     position: relative;
     display: inline-block;
-    width: 200px;
-    height: 200px;
+    @include static-square(200px);
 
     img
     {
-      width: inherit;
-      height: inherit;
+      @include static-square(200px);
       -webkit-transition: transform 500ms, opacity 500ms;
       transition: transform 500ms, opacity 500ms;
       opacity: 0.7;
+      cursor: pointer;
 
       &.hovered
       {
