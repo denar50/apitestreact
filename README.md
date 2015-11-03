@@ -2,6 +2,36 @@
 
 The current test project fetches images from flickr by using its API and passing it parameters like tag and page. 
 This application was built using the Flux architechture with Reflux.js as the framework to implement flux. 
+### Technology and dev tools
+This application was build using:
+- react 
+- reflux
+- d3
+- jquery 
+
+The css is written in *Sass*
+
+*Grunt* is used to execute automated tasks. 
+
+There are two main tasks: *build* and *release*.
+
+Developer tools:
+- Grunt: To execute automated tasks. There are two main tasks:
+    - *build* will compile the sass files into the file *assets/css/app.css*, run the browserify task to generate the *build.js* file containing all the frontend logic of the application, and finally run processhtml to generate the *index.html* file. Use build for 
+- babel: to compile ES6 (I only used ```module.exports```) and the .jsx files.
+- browserify: to encapsulate all the logic in modules that can be *required*.
+- jest: for unit testing
+### Installation
+Open a command line and run:
+
+```
+npm install
+grunt release
+node server server.js
+```
+Then open your browser on http://localhost:3000 to see the site.
+
+If you don't want to see the minified version of the code, use  ``` grunt build ``` instead of ``` grunt release ```
 
 ### Architecture
 ##### Actions:
@@ -53,6 +83,11 @@ The application begins by rendering the component *PicturesMainContainer* and th
 ### pros and cons
 
 ### TODOs
+- Implement all the tests for the application.
+- Find a library to create resources and replace my hardcoded *FlickerResource*
+- See better alternatives for implenting promises (I'm currently using jQuery for that)
 
 ### Unit tests
-There are two sample unit tests: *components/PageControl.js* and *components/PicturesGallery.js*
+There are two sample unit tests: *components/PageControl.js* and *components/PicturesGallery.js*. They should be run by using the command: npm test
+
+Please use node v0.10.40 for running the tests.
