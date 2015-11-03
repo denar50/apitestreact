@@ -49,7 +49,7 @@ If you don't want to see the minified version of the code, use  ``` grunt build 
 
 ##### Stores:
 
-- *PicturesStore*: contains the state of the application. It listens to all the actions mentioned above and implement handlers for every event in those actions. The store also has a *cathegories* object which represents the tags to filter the pictures retrieved from the *FlickerResource*. By default there are three cathegories (tags): cats, dogs and birds. 
+- *PicturesStore*: contains the state of the application. It subscribes to all the actions mentioned above and implement handlers for every event in those actions. The store also has a *cathegories* object which represents the tags to filter the pictures retrieved from the *FlickerResource*. By default there are three cathegories (tags): cats, dogs and birds. 
 
 ##### Components:
 
