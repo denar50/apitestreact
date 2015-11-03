@@ -23,8 +23,6 @@ describe('PageControl react component', function(){
     pagesLinkElements = TestUtils.scryRenderedDOMComponentsWithClass(pageControlInstance, 'page-link');
   }
 
-
-
   describe('A component that updates the page correctly', function(){
     beforeEach(function(){
       spyOn(mocksObject, 'onPageChange');
@@ -96,4 +94,4 @@ describe('PageControl react component', function(){
   });
 
 });
-//Node v0.10.40
+//Jest works on Node v0.10.40
