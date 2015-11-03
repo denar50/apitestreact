@@ -11,9 +11,10 @@ var drawPicturesGallery = require('../d3/drawPicturesGallery');
 * It contains a PageControl component to handle the pagination
 */
 var PicturesGallery = React.createClass({
+  picturesContainerId: 'pictures-container',
   //Ids of the current displayed pictures
   imagesIds: '',
-  
+
   /**
   * Event handler for when a page is requested. Triggers the event changePage defined in the PageChangeAction
   *
@@ -23,7 +24,18 @@ var PicturesGallery = React.createClass({
   {
     PageChangeAction.changePage(page);
   },
-  
+
+  /**
+  * Renders the galleries using D3 by passing in the parameters props.pictures and the selector of the pictures container.
+  */
+  renderPicturesGallery: function()
+  {
+    if(this.props.pictures)
+    {
+        this.d3Clean = drawPicturesGallery(this.props.pictures, '#'+this.picturesContainerId);
+    }
+  },
+
   /**
   * Checks whether new pictures are contained in the "pictures" array contained in "nextProps".
   * This is done by comparing the imageIds variable to the concatenated ids of the "pictures" array.
@@ -40,7 +52,6 @@ var PicturesGallery = React.createClass({
       nextProps.pictures.forEach(function(element){
         newImagesIds += element.id;
       });
-
       if(this.imagesIds !== newImagesIds)
       {
         this.imagesIds = newImagesIds;
@@ -54,30 +65,34 @@ var PicturesGallery = React.createClass({
     {
       shouldUpdate = false;
     }
-
     return shouldUpdate;
   },
-  
+
   /**
-  * Renders the galleries using D3 by passing in the parameters props.pictures and the selector of the pictures container.
+  *
   */
   componentDidUpdate: function()
   {
-    if(this.props.pictures)
-    {
-        this.d3Clean = drawPicturesGallery(this.props.pictures, '#pictures-container');
-    }
+    this.renderPicturesGallery();
   },
-  
+
+  /**
+  * Renders the galleries using D3 by passing in the parameters props.pictures and the selector of the pictures container.
+  */
+  componentDidMount: function()
+  {
+    this.renderPicturesGallery();
+  },
+
   /**
   * Asks D3 to remove all the DOM elements created by it and also its listeners to prevent memory leaks.
   */
   componentWillUnmount: function()
   {
     Utils.isFunction(this.d3Clean) && this.d3Clean();
-  },  
-  
-  
+  },
+
+
   render: function()
   {
     var page = this.props.page;
@@ -86,7 +101,7 @@ var PicturesGallery = React.createClass({
       <div>
         <PageControl onPageChange={this.onPageChange} page={page} pages={pages}/>
       </div>
-      <div id="pictures-container" className="pictures-container">
+      <div id={this.picturesContainerId} className="pictures-container">
         //Here D3 will draw the gallery items
       </div>
     </div>;
