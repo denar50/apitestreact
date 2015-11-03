@@ -21,7 +21,7 @@ FlickerResource.prototype.abortCurrentRequest = function()
 }
 
 /**
-* This method sends a GET request to Flickr's API. This request can be customized with the received params
+* This method sends a GET request to Flickr's API. This request can be customized with the received params. Returns a promise.
 * 
 * @param {object} params contain the "tags" array and the "page" number. Both parameters are optional. The tag by default is "iceland"
 */
