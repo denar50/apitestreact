@@ -19,6 +19,7 @@ var express = require('express');
     app.use('/node_modules', express.static(__dirname + '/node_modules'));
     app.use('/assets', express.static(__dirname + '/assets'));
     app.use('/build.js', express.static(__dirname + '/build.js'));
+    app.use('/build.min.js', express.static(__dirname + '/build.min.js'));
   };
 
   self.setRoutes = function()
