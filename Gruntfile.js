@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         transform: ['babelify']
       }
     },
-    uglify: 
+    uglify:
     {
       options: {
         banner: '/*! Grunt Uglify <%= grunt.template.today("yyyy-mm-dd") %> */ '
@@ -49,18 +49,18 @@ module.exports = function(grunt) {
     processhtml: {
       build: {
         files: {
-          'app/index.html': ['index.html']
+          'index.html': ['app/index.html']
         }
       },
       release: {
         files: {
-          'app/index.html': ['index.html']
+          'index.html': ['app/index.html']
         }
       }
     }
   });
 
   grunt.registerTask('build', ['sass', 'browserify', 'processhtml:build']);
-  
+
   grunt.registerTask('release', ['sass', 'browserify', 'uglify', 'processhtml:release']);
 };

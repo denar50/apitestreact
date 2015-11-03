@@ -1,5 +1,6 @@
 node_modules
 build.js
+build.min.js
 assets/css
 index.html
 !app/index.html
