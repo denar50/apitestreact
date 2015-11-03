@@ -18,6 +18,7 @@ Developer tools:
 - babel: to compile ES6 (I only used ```module.exports```) and the .jsx files.
 - browserify: to encapsulate all the logic in modules that can be *required*.
 - jest: for unit testing
+
 ## Installation
 Open a command line and run:
 
