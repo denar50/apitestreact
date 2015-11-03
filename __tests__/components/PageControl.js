@@ -62,6 +62,13 @@ describe('PageControl react component', function(){
     });
   });
 
+  it('Should display the current\'s page link with the right css class', function()
+  {
+    generateTestCase(5, 20);
+    var classedElement = TestUtils.findRenderedDOMComponentWithClass(pageControlInstance, 'selected');
+    //They must be the same instance
+    expect(pagesLinkElements[4]).toEqual(classedElement); //The current page (5) must have a ".selected" class
+  });
 
   it('Should display the right amount of elements when the offset is not defined (4 is the default)', function()
   {
@@ -91,6 +98,12 @@ describe('PageControl react component', function(){
   {
     generateTestCase(5, 0);
     expect(pagesLinkElements.length).toBe(0);
+  });
+
+  it('Should not display the arrows when there are not enough links', function()
+  {
+    generateTestCase(2, 2);
+    expect(pagesLinkElements.length).toBe(2); //Only two links generated
   });
 
 });
