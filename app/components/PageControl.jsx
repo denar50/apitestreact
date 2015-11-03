@@ -3,7 +3,7 @@ var Utils = require('../utils/Utils');
 
 var PageControl = React.createClass({
   /**
-  * Event handler for when the user requests a new page. 
+  * Event handler for when the user requests a new page.
   * It calculates (if needed) the requested page and passes it to the hanlder defined in the props.
   *
   * @param {string} page the requested page
@@ -24,7 +24,7 @@ var PageControl = React.createClass({
       this.props.onPageChange(page);
     }
   },
-  
+
   /**
   * Given the current page this will render the pagination links and will try to put the current page in the middle of them. The props.offset
   * is optional and it represents the amount of links that will be displaed on each side of the current page. E.g: If the offset is 3, props.page is 5 and props.pages is 10 then
@@ -34,7 +34,7 @@ var PageControl = React.createClass({
   {
     var links = [];
     if(this.props.page && this.props.pages)
-    {  
+    {
       var currentPage = this.props.page;
       var right = currentPage;
       var left = currentPage;
@@ -45,7 +45,7 @@ var PageControl = React.createClass({
       var pages = [];
       pages.push(currentPage);
       while((left >= leftLimit || right <= rightLimit) && numberOfLinksToShow > 0)
-      { 
+      {
         if(--left >= leftLimit)
         {
           pages.unshift(left);
@@ -58,15 +58,15 @@ var PageControl = React.createClass({
         }
       }
       var links = pages.map(function(currentPage){
-        return <a href="#" className={currentPage === this.props.page ? 'selected' : ''} onClick={this.onPageChange.bind(this, currentPage)} key={currentPage}>{currentPage}</a>
+        return <a href="#" className={'page-link ' + (currentPage === this.props.page ? 'selected' : '')} onClick={this.onPageChange.bind(this, currentPage)} key={currentPage}>{currentPage}</a>
       }.bind(this));
-      if(this.props.page - 4 > 1)
+      if(this.props.page - offset > 1)
       {
-        links.unshift(<a href="#" onClick={this.onPageChange.bind(this, "<")} key="<">&lt;</a>);
+        links.unshift(<a href="#" className='page-link' onClick={this.onPageChange.bind(this, "<")} key="<">&lt;</a>);
       }
-      if(this.props.page + 4 < this.props.pages)
+      if(this.props.page + offset < this.props.pages)
       {
-        links.push(<a onClick={this.onPageChange.bind(this, ">")} href="#" key=">">&gt;</a>);
+        links.push(<a className='page-link' onClick={this.onPageChange.bind(this, ">")} href="#" key=">">&gt;</a>);
       }
     }
     return <div className="paginator">{links}</div>
